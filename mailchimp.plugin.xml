@@ -8,4 +8,5 @@
 	<url>https://github.com/miklb/Habari_Mailchimp</url>
 	<description><![CDATA[A Habari plugin to add a newsletter signup using the Mailchimp API]]></description>
 	<copyright>2013</copyright>
+	<guid>181eb038-734d-4344-8c6f-d7299830f981</guid>
 </pluggable>
