@@ -92,15 +92,13 @@ class HabariMC extends Plugin
 
 	public function configure()
 	{
-		$ui = new FormUI( 'mailchimp_config' );
+		$ui = new FormUI( strtolower( get_class( $this ) ) );
 
 		// Add a text control for the API key
-		$api = $ui->append( 'text', 'api', 'option:mailchimp__api', _t( 'Your Mailchimp API Key ' ) );
-		$api->add_validator( 'validate_required' );
+		$ui->append( 'text', 'api', 'option:mailchimp__api', _t( 'Your Mailchimp API Key ' ) );
 
 		// Add a text control for Unique List ID
-		$listid = $ui->append( 'text', 'listid', 'option:mailchimp__listid', _t( 'Your Unique List ID ' ) );
-		$subject_prefix->add_validator( 'validate_required' );
+		$ui->append( 'text', 'listid', 'option:mailchimp__listid', _t( 'Your Unique List ID ' ) );
 		
 		$ui->append( 'submit', 'save', 'Save' );
 		return $ui;
