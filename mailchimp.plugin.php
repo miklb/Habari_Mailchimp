@@ -67,10 +67,9 @@ class HabariMC extends Plugin
 	function process_mailchimp ($form) {
 
 		include_once 'MCAPI.class.php';
-		$api = Options::get('mailchimp_api');
+		$api = Options::get('mailchimp__api');
 		$mc_api = new MCAPI ($api);
-
-		$list_id =  Options::get('mailchimp_listid');
+		$list_id =  Options::get('mailchimp__listid');
 
 		$merge_vars = array(
 			'FNAME' => $form->mc_fname->value,
