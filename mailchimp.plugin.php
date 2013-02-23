@@ -72,10 +72,10 @@ class HabariMC extends Plugin
 
 		$list_id = '54affe386b';
 
-		$merg_vars = array(
-			'FNAME' => $mc_fname,
-			'LNAME' => $mc_lname,
-			'MMERGE3' => $mc_phone,
+		$merge_vars = array(
+			'FNAME' => $form->mc_fname->value,
+			'LNAME' => $form->mc_lname->value,
+			'MMERGE3' => $form->mc_phone->value,
 			);
 
 		$retval = $api->listSubscribe( $list_id, $form->mc_email->value, $merge_vars );
