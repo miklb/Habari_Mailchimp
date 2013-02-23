@@ -1,6 +1,6 @@
 Habari_Mailchimp
 ================
-A Habari plugin to add a newsletter signup form using the Mailchimp API
+A Habari plugin to add a newsletter signup form using the Mailchimp API. Please note currently this plugin only supports first name, last name, email (of course) and an optional phone # input. The phone is mapped to a specific merge tag. Much more is planned, but if you have any questions or need help customizing, please open an issue and I will see what I can do. 
 
 ### Usage
 Activate the plugin and configure with your API key and Unique List ID.
