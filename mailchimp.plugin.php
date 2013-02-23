@@ -49,8 +49,8 @@ class HabariMC extends Plugin
 		_t('Phone Number'),
 		'formcontrol_text'
 		)->id = 'mc_phone';
-		$form->mc_fname->tabindex = 4;
-		$form->mc_fname->value = $mc_phone;
+		$form->mc_phone->tabindex = 4;
+		$form->mc_phone->value = $mc_phone;
 
 		// Create the Submit button
 		$form->append( 'submit', 'mc_submit', _t( 'Submit' ), 'formcontrol_submit' );
@@ -78,12 +78,13 @@ class HabariMC extends Plugin
 			'MMERGE3' => $mc_phone,
 			);
 
-		$retval = $api->listSubscribe( $listId, $mc_email, $merge_vars );
+		$retval = $api->listSubscribe( $list_id, $form->mc_email->value, $merge_vars );
 
 		if ($api->errorCode) {
 			echo "Unable to load listSubscribe()!\n";
 			echo "\tCode=".$api->errorCode."\n";
 			echo "\tMsg=".$api->errorMessage."\n";
+			echo $mc_fname;
 		} else {
     		echo "Subscribed - look for the confirmation email!\n";
 		};
