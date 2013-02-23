@@ -2,7 +2,7 @@
 
 class HabariMC extends Plugin
 {
-	public function get_mc_form () {
+	public function theme_mailchimp_form ($theme) {
 
 		$form = new FormUI ('mailchimp');
 
@@ -59,7 +59,7 @@ class HabariMC extends Plugin
 		// Set up form processing
 		$form->on_success( array($this, 'process_mailchimp') );
 		// Return the form object
-		return $form;
+		return $form->get();
 
 
 	}
