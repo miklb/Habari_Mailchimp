@@ -67,10 +67,10 @@ class HabariMC extends Plugin
 	function process_mailchimp ($form) {
 
 		include_once 'MCAPI.class.php';
+		$api = Options::get('mailchimp_api');
+		$mc_api = new MCAPI ($api);
 
-		$api = new MCAPI ('1298434a4273ac7b51a74dbcecb130f1-us6');
-
-		$list_id = '54affe386b';
+		$list_id =  Options::get('mailchimp_listid');
 
 		$merge_vars = array(
 			'FNAME' => $form->mc_fname->value,
@@ -78,7 +78,7 @@ class HabariMC extends Plugin
 			'MMERGE3' => $form->mc_phone->value,
 			);
 
-		$retval = $api->listSubscribe( $list_id, $form->mc_email->value, $merge_vars );
+		$retval = $mc_api->listSubscribe( $list_id, $form->mc_email->value, $merge_vars );
 
 		if ($api->errorCode) {
 			echo "Unable to load listSubscribe()!\n";
@@ -88,6 +88,22 @@ class HabariMC extends Plugin
 		} else {
     		echo "Subscribed - look for the confirmation email!\n";
 		};
+	}
+
+	public function configure()
+	{
+		$ui = new FormUI( 'mailchimp_config' );
+
+		// Add a text control for the API key
+		$api = $ui->append( 'text', 'api', 'option:mailchimp__api', _t( 'Your Mailchimp API Key ' ) );
+		$api->add_validator( 'validate_required' );
+
+		// Add a text control for Unique List ID
+		$listid = $ui->append( 'text', 'listid', 'option:mailchimp__listid', _t( 'Your Unique List ID ' ) );
+		$subject_prefix->add_validator( 'validate_required' );
+		
+		$ui->append( 'submit', 'save', 'Save' );
+		return $ui;
 	}
 	
 }
