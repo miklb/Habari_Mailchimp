@@ -5,9 +5,12 @@ A Habari plugin to add a newsletter signup form using the Mailchimp API. Please 
 ### Usage
 Activate the plugin and configure with your API key and Unique List ID.
 
-Currently, the plugin is only set up to display the form in a theme via ```php
+Currently, the plugin is only set up to display the form in a theme via 
+
+```php
 <?php echo $theme->mailchimp_form(); ?>
 ```
+
 Future versions will include a block as well a quicktag to embed in a page.
 
 ### MailChimp PHP API Wrapper 1.3
